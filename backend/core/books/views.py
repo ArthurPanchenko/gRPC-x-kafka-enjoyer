@@ -7,7 +7,7 @@ from .models import Book
 
 class BookViewSet(ModelViewSet):
     queryset = Book.objects.all()
-    # permission_classes = [IsAuthenticatedOrReadOnly,]
+    permission_classes = [IsAuthenticatedOrReadOnly,]
 
     def get_serializer_class(self):
         if self.action == 'list':
