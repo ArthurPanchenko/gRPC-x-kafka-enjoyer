@@ -1,0 +1,6 @@
+grpcio
+grpcio-tools
+protobuf==4.21.6
+psycopg2
+kafka-python
+sqlalchemy

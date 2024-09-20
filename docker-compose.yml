@@ -21,3 +21,20 @@ services:
       - POSTGRES_DB=db_name
       - POSTGRES_USER=db_user
       - POSTGRES_PASSWORD=pass
+
+  service:
+    build: service/
+    ports:
+      - "50051:50051"
+    environment:
+      - DB_HOST=database
+      - DB_NAME=db_name
+      - DB_USER=db_user
+      - DB_PASS=pass
+    volumes:
+      - ./service/core:/service
+    depends_on:
+      - database
+    command: >
+      sh -c "python books_service.py"
+    
