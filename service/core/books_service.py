@@ -1,4 +1,5 @@
 import logging
+import threading
 import grpc
 import books_pb2, books_pb2_grpc
 
@@ -8,6 +9,7 @@ from concurrent import futures
 
 from models import Book, Base
 from database import get_db_connection
+from kafka_consumer import KafkaBookConsumer
 
 
 Session = sessionmaker()
@@ -51,6 +53,13 @@ def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     books_pb2_grpc.add_BookServiceServicer_to_server(BookService(), server)
     server.add_insecure_port('[::]:50051')
+
+    kafka_consumer = KafkaBookConsumer(
+        topic='book_events',
+        bootstrap_servers='kafka:9092'
+    )
+    kafka_consumer.start()
+
     server.start()
     logging.info("gRPC сервис запущен на порту 50051")
     server.wait_for_termination()

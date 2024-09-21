@@ -6,7 +6,7 @@ services:
     volumes:
       - ./backend/core:/app
     command: >
-      sh -c "python manage.py runserver 0.0.0.0:8000"
+      sh -c "sleep 15 && python manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=database
       - DB_NAME=db_name
@@ -14,6 +14,7 @@ services:
       - DB_PASS=pass
     depends_on:
       - database
+      - kafka
 
   database:
     image: postgres:15.8-alpine
@@ -35,6 +36,26 @@ services:
       - ./service/core:/service
     depends_on:
       - database
+      - kafka
     command: >
-      sh -c "python books_service.py"
-    
+      sh -c "sleep 20 && python books_service.py"
+  
+  zookeeper:
+    image: wurstmeister/zookeeper:3.4.6
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: wurstmeister/kafka:latest
+    ports:
+      - "9092:9092"
+      - "9094:9094"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: INSIDE://kafka:9092,OUTSIDE://localhost:9094
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_LISTENERS: INSIDE://0.0.0.0:9092,OUTSIDE://0.0.0.0:9094
+      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+    depends_on:
+      - zookeeper
