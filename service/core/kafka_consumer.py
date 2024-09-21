@@ -11,7 +11,7 @@ class KafkaBookConsumer(Thread):
         self.consumer = KafkaConsumer(
             topic,
             bootstrap_servers=bootstrap_servers,
-            auto_offset_reset='earliest',
+            auto_offset_reset='latest',
             enable_auto_commit=True,
             value_deserializer=lambda x: json.loads(x.decode('utf-8'))
         )
@@ -28,6 +28,7 @@ class KafkaBookConsumer(Thread):
             book_id = book_info.get('id')
             title = book_info.get('title')
             author = book_info.get('author')
+            publish_date = book_info.get('publish_date')
 
-            log_message = f"Book {event_type}: ID={book_id}, Title={title}, Author={author}"
+            log_message = f"Книга {event_type}: ID: {book_id}, Название: {title}, Автор: {author}, Дата публикации: {publish_date}"
             logging.info(log_message)

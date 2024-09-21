@@ -5,11 +5,14 @@ import books_pb2, books_pb2_grpc
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.exc import OperationalError
 from concurrent import futures
 
 from models import Book, Base
+from utils import retry
 from database import get_db_connection
 from kafka_consumer import KafkaBookConsumer
+from kafka.errors import KafkaError
 
 
 Session = sessionmaker()
@@ -25,6 +28,7 @@ class BookService(books_pb2_grpc.BookServiceServicer):
             logging.error(f"Ошибка подключения к базе данных: {e}")
             raise
 
+    @retry(times=3, delay=1, exceptions=(OperationalError,))
     def getBookById(self, request, context):
         
         with self.Session() as session:
@@ -37,6 +41,7 @@ class BookService(books_pb2_grpc.BookServiceServicer):
                 context.set_details('Книга не найдена')
                 return books_pb2.BookResponse()
     
+    @retry(times=3, delay=1, exceptions=(OperationalError,))
     def getAllBooks(self, request, context):
         
         with self.Session() as session:

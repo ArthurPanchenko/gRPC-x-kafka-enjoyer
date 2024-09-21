@@ -4,3 +4,4 @@ psycopg2
 djangorestframework-simplejwt
 kafka-python>=2.0.2
 six==1.15.0
+django-redis
