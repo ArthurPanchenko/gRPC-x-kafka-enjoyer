@@ -44,6 +44,10 @@
     ```
         docker-compose up --build
     ```
+2. Выполните миграции в отдельной консоле:
+    ```
+        docker-compose exec web-app python manage.py migrate
+    ```
 2. После успешного запуска приложения, вы можете получить доступ к веб-API по адресу:
     ```
         http://localhost:8000/api/v1/books/
