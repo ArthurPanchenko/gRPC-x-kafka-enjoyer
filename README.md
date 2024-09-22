@@ -110,14 +110,14 @@
         В папках /core содержится код проекта (сервиса) который исполняется в изолированном контейнере
 
 ## Скриншоты
-Запуск gRPC и проверка с помощью клиента (books_client.py)
-<img src="https://github.com/user-attachments/assets/bfd3ad6f-ad62-41a2-b3e5-4f347fd4ab8b" width="800">
-Kafka логи
-<img src="https://github.com/user-attachments/assets/3a038197-1530-4189-a914-cae47d01d1dd" width="800">
-Docs django
-<img src="https://github.com/user-attachments/assets/37e667ca-a727-4358-a485-0c15b21ff216" width="800">
-Декоратор retry
-<img src="https://github.com/user-attachments/assets/7e940fdf-45a1-4a06-991c-f4b62ecfc26b" width="800">
+Запуск gRPC и проверка с помощью клиента (books_client.py) <br>
+<img src="https://github.com/user-attachments/assets/bfd3ad6f-ad62-41a2-b3e5-4f347fd4ab8b" width="800"><br>
+Kafka логи<br>
+<img src="https://github.com/user-attachments/assets/3a038197-1530-4189-a914-cae47d01d1dd" width="800"><br>
+Docs django<br>
+<img src="https://github.com/user-attachments/assets/37e667ca-a727-4358-a485-0c15b21ff216" width="800"><br>
+Декоратор retry<br>
+<img src="https://github.com/user-attachments/assets/7e940fdf-45a1-4a06-991c-f4b62ecfc26b" width="800"><br>
 
 
 
