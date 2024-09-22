@@ -11,6 +11,7 @@
 5. [Тестирование](#тестирование)
 6. [Дополнительные задания](#дополнительные-задания)
 7. [Архитектура](#архитектура)
+8. [Скриншоты](#скриншоты)
 
 ## Требования
 
@@ -107,3 +108,16 @@
         Внутри находятся req.txt и Dockerfile для запуска. 
 
         В папках /core содержится код проекта (сервиса) который исполняется в изолированном контейнере
+
+## Скриншоты
+    * Запуск gRPC и проверка с помощью клиента (books_client.py)
+        ![client](https://github.com/user-attachments/assets/bfd3ad6f-ad62-41a2-b3e5-4f347fd4ab8b)
+    * Kafka логи
+        ![kafka_log_screen](https://github.com/user-attachments/assets/3a038197-1530-4189-a914-cae47d01d1dd)
+    * Docs django
+        ![Screenshot_1](https://github.com/user-attachments/assets/37e667ca-a727-4358-a485-0c15b21ff216)
+    * Декоратор retry
+        ![decorator_retry](https://github.com/user-attachments/assets/7e940fdf-45a1-4a06-991c-f4b62ecfc26b)
+
+
+
