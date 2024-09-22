@@ -24,7 +24,7 @@
 
 1. Клонируйте репозиторий:
     ```
-        git clone https://github.com/ArthurPanchenko/testovoe_030924.git
+        git clone https://github.com/ArthurPanchenko/testovoe_180924.git
         cd testovoe_030924
     ```
 2. Создайте виртуальное окружение и активируйте его:
