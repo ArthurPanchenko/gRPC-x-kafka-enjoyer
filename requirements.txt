@@ -1,0 +1,11 @@
+grpcio
+grpcio-tools
+protobuf==4.21.6
+psycopg2
+sqlalchemy
+kafka-python>=2.0.2
+six==1.15.0
+Django==4.2
+djangorestframework==3.14.0
+djangorestframework-simplejwt
+django-redis

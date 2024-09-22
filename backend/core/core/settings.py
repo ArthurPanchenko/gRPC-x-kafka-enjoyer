@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Пакеты 
     'rest_framework',
     'rest_framework_simplejwt',
+    'drf_yasg',
     
     # Приложения
     'books',
